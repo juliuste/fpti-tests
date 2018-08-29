@@ -34,6 +34,10 @@ tape('fptf-tests.packageExports', (t) => {
 			nearby: () => 1
 		}
 	}
+	package1.journeys.features = {}
+	package1.stations.all.features = {}
+	package1.stations.nearby.features = {}
+
 	const package2 = {
 		journeys: () => 1,
 		stops: {
@@ -44,13 +48,27 @@ tape('fptf-tests.packageExports', (t) => {
 		},
 		otherMethod: () => 1
 	}
+	package2.journeys.features = {}
+	package2.regions.all.features = {}
+	package2.stops.nearby.features = {}
+
 	const package3 = {
 		journeys: () => 1,
-		stopovers: 1
+		stopovers: {features: {}}
 	}
+	package3.journeys.features = {}
+
 	const package4 = {
 		otherMethod: 1
 	}
+
+	const package5 = {
+		journeys: () => 1,
+		regions: {
+			search: () => 1
+		}
+	}
+	package5.journeys.features = {}
 
 	t.ok(tests.packageExports(package1, ['journeys', 'stations.all', 'stations.nearby']))
 	t.throws(() => tests.packageExports(package1, ['journeys', 'stations.nearby']))
@@ -63,6 +81,10 @@ tape('fptf-tests.packageExports', (t) => {
 
 	t.throws(() => tests.packageExports(package4, ['stations.all']))
 	t.throws(() => tests.packageExports(package4, []))
+
+	t.throws(() => tests.packageExports(package5, ['journeys', 'regions.search']))
+	package5.regions.search.features = {}
+	t.ok(tests.packageExports(package5, ['journeys', 'regions.search']))
 
 	t.end()
 })
