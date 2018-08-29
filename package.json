@@ -1,0 +1,38 @@
+{
+	"name": "fpti-tests",
+	"description": "Validator/test methods for FPTI (friendly public transport interface) modules.",
+	"version": "0.0.0",
+	"keywords": [
+		"fpti",
+		"fpti-js",
+		"friendly",
+		"public",
+		"transport",
+		"transportation",
+		"interface",
+		"format",
+		"fptf",
+		"test",
+		"tests",
+		"validate",
+		"validation",
+		"validator"
+	],
+	"author": "Julius Tens <mail@juliustens.eu>",
+	"homepage": "https://github.com/juliuste/fpti-tests",
+	"repository": "juliuste/fpti-tests",
+	"bugs": "https://github.com/juliuste/fpti-tests/issues",
+	"main": "./index.js",
+	"dependencies": {},
+	"devDependencies": {
+		"tape": "^4.9.1"
+	},
+	"scripts": {
+		"test": "node test.js",
+		"prepublishOnly": "npm test"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"license": "ISC"
+}
