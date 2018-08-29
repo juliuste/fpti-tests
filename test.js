@@ -88,3 +88,66 @@ tape('fptf-tests.packageExports', (t) => {
 
 	t.end()
 })
+
+tape('fptf-tests._features', (t) => {
+	const _allFeatures1 = {}
+	const _allFeatures2 = {otherOption: 'description'}
+
+	const _nearbyFeatures1 = {results: 'description'}
+	const _nearbyFeatures2 = {otherOption: 'description'}
+	const _nearbyFeatures3 = {results: 1}
+
+	const _searchFeatures1 = {results: 'description'}
+	const _searchFeatures2 = {otherOption: 'description'}
+
+	const stopoversFeatures1 = {when: 'description', departureAfter: 'description', results: 'description', interval: 'description'}
+	const stopoversFeatures2 = {when: 'description', otherOption: 'description'}
+
+	const journeysFeatures1 = {when: 'description', departureAfter: 'description', results: 'description', interval: 'description', transfers: 'description'}
+	const journeysFeatures2 = {when: 'description', otherOption: 'description'}
+
+	t.ok(tests.stationsAllFeatures(_allFeatures1, []))
+	t.ok(tests.stationsAllFeatures(_allFeatures2, []))
+	t.ok(tests.stopsAllFeatures(_allFeatures1, []))
+	t.ok(tests.stopsAllFeatures(_allFeatures2, []))
+	t.ok(tests.regionsAllFeatures(_allFeatures1, []))
+	t.ok(tests.regionsAllFeatures(_allFeatures2, []))
+
+	t.ok(tests.stationsNearbyFeatures(_nearbyFeatures1, ['results']))
+	t.throws(() => tests.stationsNearbyFeatures(_nearbyFeatures1, ['results', 'distance']))
+	t.throws(() => tests.stationsNearbyFeatures(_nearbyFeatures2, ['results']))
+	t.throws(() => tests.stationsNearbyFeatures(_nearbyFeatures2, []))
+	t.throws(() => tests.stationsNearbyFeatures(_nearbyFeatures3, ['results']))
+	t.ok(tests.stopsNearbyFeatures(_nearbyFeatures1, ['results']))
+	t.throws(() => tests.stopsNearbyFeatures(_nearbyFeatures1, ['results', 'distance']))
+	t.throws(() => tests.stopsNearbyFeatures(_nearbyFeatures2, ['results']))
+	t.throws(() => tests.stopsNearbyFeatures(_nearbyFeatures2, []))
+	t.ok(tests.regionsNearbyFeatures(_nearbyFeatures1, ['results']))
+	t.throws(() => tests.regionsNearbyFeatures(_nearbyFeatures1, ['results', 'distance']))
+	t.throws(() => tests.regionsNearbyFeatures(_nearbyFeatures2, ['results']))
+	t.throws(() => tests.regionsNearbyFeatures(_nearbyFeatures2, []))
+
+	t.ok(tests.stationsSearchFeatures(_searchFeatures1, ['results']))
+	t.throws(() => tests.stationsSearchFeatures(_searchFeatures2, ['results']))
+	t.throws(() => tests.stationsSearchFeatures(_searchFeatures2, []))
+	t.ok(tests.stopsSearchFeatures(_searchFeatures1, ['results']))
+	t.throws(() => tests.stopsSearchFeatures(_searchFeatures2, ['results']))
+	t.throws(() => tests.stopsSearchFeatures(_searchFeatures2, []))
+	t.ok(tests.regionsSearchFeatures(_searchFeatures1, ['results']))
+	t.throws(() => tests.regionsSearchFeatures(_searchFeatures2, ['results']))
+	t.throws(() => tests.regionsSearchFeatures(_searchFeatures2, []))
+
+	t.ok(tests.stopoversFeatures(stopoversFeatures1, ['when', 'departureAfter', 'results', 'interval']))
+	t.throws(() => tests.stopoversFeatures(stopoversFeatures1, ['when', 'departureAfter', 'results']))
+	t.throws(() => tests.stopoversFeatures(stopoversFeatures1, ['when', 'departureAfter', 'results', 'interval', 'direction']))
+	t.throws(() => tests.stopoversFeatures(stopoversFeatures2, ['when', 'departureAfter', 'results', 'interval']))
+	t.throws(() => tests.stopoversFeatures(stopoversFeatures2, []))
+
+	t.ok(tests.journeysFeatures(journeysFeatures1, ['when', 'departureAfter', 'results', 'interval', 'transfers']))
+	t.throws(() => tests.journeysFeatures(journeysFeatures1, ['when', 'departureAfter', 'results', 'transfers']))
+	t.throws(() => tests.journeysFeatures(journeysFeatures1, ['when', 'departureAfter', 'results', 'interval', 'transfers', 'via']))
+	t.throws(() => tests.journeysFeatures(journeysFeatures2, ['when', 'departureAfter', 'results', 'interval', 'transfers']))
+	t.throws(() => tests.journeysFeatures(journeysFeatures2, []))
+
+	t.end()
+})
