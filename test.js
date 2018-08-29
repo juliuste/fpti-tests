@@ -3,7 +3,7 @@
 const tape = require('tape')
 const tests = require('./index')
 
-tape('fptf-tests.packageJson', async (t) => {
+tape('fpti-tests.packageJson', async (t) => {
 	const validPackage1 = {
 		dependencies: {
 			'validate-fptf': '2.1.1'
@@ -26,7 +26,7 @@ tape('fptf-tests.packageJson', async (t) => {
 	t.end()
 })
 
-tape('fptf-tests.packageExports', (t) => {
+tape('fpti-tests.packageExports', (t) => {
 	const package1 = {
 		journeys: () => 1,
 		stations: {
@@ -89,7 +89,7 @@ tape('fptf-tests.packageExports', (t) => {
 	t.end()
 })
 
-tape('fptf-tests._features', (t) => {
+tape('fpti-tests._features', (t) => {
 	const _allFeatures1 = {}
 	const _allFeatures2 = {otherOption: 'description'}
 
