@@ -28,7 +28,7 @@
 	],
 	"main": "lib/index.js",
 	"scripts": {
-		"check-deps": "depcheck",
+		"check-deps": "depcheck --ignores='fpti'",
 		"fix": "eslint --fix lib test.js",
 		"lint": "eslint lib test.js",
 		"prepublishOnly": "npm test",
@@ -48,7 +48,8 @@
 		"eslint-plugin-node": "^8.0.0",
 		"eslint-plugin-promise": "^4.0.1",
 		"eslint-plugin-standard": "^4.0.0",
-		"tape": "^4.9.1"
+		"tape": "^4.9.1",
+		"tape-promise": "^4.0.0"
 	},
 	"engines": {
 		"node": ">=8"
