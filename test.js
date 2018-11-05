@@ -17,12 +17,12 @@ tape('fpti-tests.packageJson', async (t) => {
 		}
 	}
 	const invalidPackage1 = {}
-	const invalidPackage2 = {dependencies: {
+	const invalidPackage2 = { dependencies: {
 		'validate-fptf': '0.0.0'
-	}}
+	} }
 
 	await tests.packageJson(validPackage1).then(() => t.pass()).catch(() => t.fail())
-	await tests.packageJson(validPackage1).then(() => t.pass()).catch(() => t.fail())
+	await tests.packageJson(validPackage2).then(() => t.pass()).catch(() => t.fail())
 	await tests.packageJson(invalidPackage1).then(() => t.fail()).catch(() => t.pass())
 	await tests.packageJson(invalidPackage2).then(() => t.fail()).catch(() => t.pass())
 	t.end()
@@ -56,7 +56,7 @@ tape('fpti-tests.packageExports', (t) => {
 
 	const package3 = {
 		journeys: () => 1,
-		stopovers: {features: {}}
+		stopovers: { features: {} }
 	}
 	package3.journeys.features = {}
 
@@ -93,20 +93,20 @@ tape('fpti-tests.packageExports', (t) => {
 
 tape('fpti-tests._features', (t) => {
 	const _allFeatures1 = {}
-	const _allFeatures2 = {otherOption: 'description'}
+	const _allFeatures2 = { otherOption: 'description' }
 
-	const _nearbyFeatures1 = {results: 'description'}
-	const _nearbyFeatures2 = {otherOption: 'description'}
-	const _nearbyFeatures3 = {results: 1}
+	const _nearbyFeatures1 = { results: 'description' }
+	const _nearbyFeatures2 = { otherOption: 'description' }
+	const _nearbyFeatures3 = { results: 1 }
 
-	const _searchFeatures1 = {results: 'description'}
-	const _searchFeatures2 = {otherOption: 'description'}
+	const _searchFeatures1 = { results: 'description' }
+	const _searchFeatures2 = { otherOption: 'description' }
 
-	const stopoversFeatures1 = {when: 'description', departureAfter: 'description', results: 'description', interval: 'description'}
-	const stopoversFeatures2 = {when: 'description', otherOption: 'description'}
+	const stopoversFeatures1 = { when: 'description', departureAfter: 'description', results: 'description', interval: 'description' }
+	const stopoversFeatures2 = { when: 'description', otherOption: 'description' }
 
-	const journeysFeatures1 = {when: 'description', departureAfter: 'description', results: 'description', interval: 'description', transfers: 'description'}
-	const journeysFeatures2 = {when: 'description', otherOption: 'description'}
+	const journeysFeatures1 = { when: 'description', departureAfter: 'description', results: 'description', interval: 'description', transfers: 'description' }
+	const journeysFeatures2 = { when: 'description', otherOption: 'description' }
 
 	t.ok(tests.stationsAllFeatures(_allFeatures1, []))
 	t.ok(tests.stationsAllFeatures(_allFeatures2, []))
