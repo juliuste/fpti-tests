@@ -1,7 +1,9 @@
 'use strict'
 
-const tape = require('tape')
-const tests = require('./index')
+const tapeWithoutPromise = require('tape')
+const addPromiseSupport = require('tape-promise').default
+const tape = addPromiseSupport(tapeWithoutPromise)
+const tests = require('.')
 
 tape('fpti-tests.packageJson', async (t) => {
 	const validPackage1 = {
