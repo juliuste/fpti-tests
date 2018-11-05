@@ -1,28 +1,39 @@
 {
 	"name": "fpti-tests",
-	"description": "Validator/test methods for FPTI (friendly public transport interface) modules.",
 	"version": "0.0.0",
+	"description": "Validator/test methods for FPTI (friendly public transport interface) modules.",
 	"keywords": [
+		"format",
+		"fptf",
 		"fpti",
 		"fpti-js",
 		"friendly",
-		"public",
-		"transport",
-		"transportation",
 		"interface",
-		"format",
-		"fptf",
+		"public",
 		"test",
 		"tests",
+		"transport",
+		"transportation",
 		"validate",
 		"validation",
 		"validator"
 	],
-	"author": "Julius Tens <mail@juliustens.eu>",
 	"homepage": "https://github.com/juliuste/fpti-tests",
-	"repository": "juliuste/fpti-tests",
 	"bugs": "https://github.com/juliuste/fpti-tests/issues",
-	"main": "./index.js",
+	"repository": "juliuste/fpti-tests",
+	"license": "ISC",
+	"author": "Julius Tens <mail@juliustens.eu>",
+	"files": [
+		"lib/*"
+	],
+	"main": "lib/index.js",
+	"scripts": {
+		"check-deps": "depcheck",
+		"fix": "eslint --fix lib test.js",
+		"lint": "eslint lib test.js",
+		"prepublishOnly": "npm test",
+		"test": "npm run lint && npm run check-deps && node test"
+	},
 	"dependencies": {
 		"fpti": "0.3.2",
 		"lodash": "^4.17.10",
@@ -30,14 +41,16 @@
 		"semver-diff": "^2.1.0"
 	},
 	"devDependencies": {
+		"depcheck": "^0.6.11",
+		"eslint": "^5.8.0",
+		"eslint-config-standard": "^12.0.0",
+		"eslint-plugin-import": "^2.14.0",
+		"eslint-plugin-node": "^8.0.0",
+		"eslint-plugin-promise": "^4.0.1",
+		"eslint-plugin-standard": "^4.0.0",
 		"tape": "^4.9.1"
-	},
-	"scripts": {
-		"test": "node test.js",
-		"prepublishOnly": "npm test"
 	},
 	"engines": {
 		"node": ">=8"
-	},
-	"license": "ISC"
+	}
 }
