@@ -37,7 +37,7 @@
 	"dependencies": {
 		"fpti": "0.3.2",
 		"lodash": "^4.17.10",
-		"package-json": "^5.0.0",
+		"package-json": "^6.2.0",
 		"semver-diff": "^2.1.0"
 	},
 	"devDependencies": {
